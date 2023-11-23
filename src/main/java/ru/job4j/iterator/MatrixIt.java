@@ -20,15 +20,6 @@ public class MatrixIt implements Iterator<Integer> {
         }
         return row < data.length;
     }
-//    while (data[row].length == 0 || column >= data[row].length) {
-//            row++;
-//            column = 0;
-//            if (row >= data.length) {
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
 
     @Override
     public Integer next() {
