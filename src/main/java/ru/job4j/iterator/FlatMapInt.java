@@ -3,7 +3,7 @@ package ru.job4j.iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FlatMap {
+public class FlatMapInt {
     public static void main(String[] args) {
         List<List<Integer>> data = List.of(
                 List.of(1, 2, 3),
