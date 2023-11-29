@@ -8,9 +8,7 @@ public final class MemStore<T extends Base> implements Store<T> {
 
     @Override
     public void add(T model) {
-        if (findById(model.getId()) == null) {
-            storege.put(model.getId(), model);
-        }
+        storege.putIfAbsent(model.getId(), model);
     }
 
     @Override
