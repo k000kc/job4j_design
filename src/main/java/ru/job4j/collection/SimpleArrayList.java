@@ -31,6 +31,7 @@ public class SimpleArrayList<T> implements SimpleList<T> {
     public T remove(int index) {
         T oldValue = container[Objects.checkIndex(index, size)];
         System.arraycopy(container, index + 1, container, index, size - index - 1);
+        container[container.length - 1] = null;
         size--;
         modCount++;
         return oldValue;
