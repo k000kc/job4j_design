@@ -57,6 +57,6 @@ class SimpleQueueTest {
         queue.push(2);
         queue.poll();
         queue.push(3);
-        assertThat(queue.poll()).isEqualTo(3);
+        assertThat(queue.poll()).isEqualTo(2);
     }
 }
