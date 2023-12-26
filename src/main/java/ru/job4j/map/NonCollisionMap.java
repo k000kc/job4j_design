@@ -14,7 +14,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         if (count >= capacity * LOAD_FACTOR) {
             expand();
         }
-        int index = indexFor(hash(Objects.hashCode(key)));
+        int index = getIndex(key);
         boolean rsl = table[index] == null;
         if (rsl) {
             table[index] = new MapEntry<>(key, value);
@@ -37,7 +37,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         capacity = capacity << 1;
         for (MapEntry<K, V> entry : table) {
             if (entry != null) {
-                newTable[indexFor(hash(Objects.hashCode(entry.key)))] = entry;
+                newTable[getIndex(entry.key)] = entry;
             }
         }
         table = newTable;
@@ -46,8 +46,8 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     @Override
     public V get(K key) {
         V rsl = null;
-        int index = indexFor(hash(Objects.hashCode(key)));
-        if (isValidIndexForKey(index, key)) {
+        int index = getIndex(key);
+        if (isValidIndexForKey(key)) {
             rsl = table[index].value;
         }
         return rsl;
@@ -56,8 +56,8 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     @Override
     public boolean remove(K key) {
         boolean rsl = false;
-        int index = indexFor(hash(Objects.hashCode(key)));
-        if (isValidIndexForKey(index, key)) {
+        int index = getIndex(key);
+        if (isValidIndexForKey(key)) {
             table[index] = null;
             count--;
             modCount++;
@@ -66,10 +66,15 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         return rsl;
     }
 
-    private boolean isValidIndexForKey(int index, K key) {
+    private boolean isValidIndexForKey(K key) {
+        int index = getIndex(key);
         return table[index] != null
                 && Objects.hashCode(table[index].key) == Objects.hashCode(key)
                 && Objects.equals(table[index].key, key);
+    }
+
+    private int getIndex(K key) {
+        return indexFor(hash(Objects.hashCode(key)));
     }
 
     @Override
