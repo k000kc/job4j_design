@@ -25,7 +25,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     }
 
     private int hash(int hashCode) {
-        return hashCode == 0 ? 0 : hashCode ^ (hashCode >>> 16);
+        return hashCode ^ (hashCode >>> 16);
     }
 
     private int indexFor(int hash) {
@@ -47,9 +47,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     public V get(K key) {
         V rsl = null;
         int index = indexFor(hash(Objects.hashCode(key)));
-        if (table[index] != null
-                && Objects.hashCode(table[index].key) == Objects.hashCode(key)
-                && Objects.equals(table[index].key, key)) {
+        if (isValidIndexForKey(index, key)) {
             rsl = table[index].value;
         }
         return rsl;
@@ -59,15 +57,19 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     public boolean remove(K key) {
         boolean rsl = false;
         int index = indexFor(hash(Objects.hashCode(key)));
-        if (table[index] != null
-                && Objects.hashCode(table[index].key) == Objects.hashCode(key)
-                && Objects.equals(table[index].key, key)) {
+        if (isValidIndexForKey(index, key)) {
             table[index] = null;
             count--;
             modCount++;
             rsl = true;
         }
         return rsl;
+    }
+
+    private boolean isValidIndexForKey(int index, K key) {
+        return table[index] != null
+                && Objects.hashCode(table[index].key) == Objects.hashCode(key)
+                && Objects.equals(table[index].key, key);
     }
 
     @Override
