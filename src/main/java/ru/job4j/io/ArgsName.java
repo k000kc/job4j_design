@@ -32,6 +32,9 @@ public class ArgsName {
             if (!str.contains("=")) {
                 throw new IllegalArgumentException(String.format("Error: This argument '%s' does not contain an equal sign", str));
             }
+            if (str.split("=", 2)[1].isEmpty()) {
+                throw new IllegalArgumentException(String.format("Error: This argument '%s' does not contain a value", str));
+            }
         });
     }
 
@@ -39,9 +42,6 @@ public class ArgsName {
         String[] argsArray;
         for (String arg : args) {
             argsArray = arg.split("=", 2);
-            if (argsArray[1].isEmpty()) {
-                throw new IllegalArgumentException(String.format("Error: This argument '%s' does not contain a value", arg));
-            }
             if (argsArray[0].startsWith("-")) {
                 this.values.put(argsArray[0].substring(1), argsArray[1]);
             }
