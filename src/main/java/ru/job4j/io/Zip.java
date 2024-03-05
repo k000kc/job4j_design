@@ -1,6 +1,7 @@
 package ru.job4j.io;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -34,7 +35,7 @@ public class Zip {
         }
     }
 
-    private static void checkArgs(String[] args) {
+    private static void checkArgs(String[] args, ArgsName argsName) {
         if (args.length < 3) {
             throw new IllegalArgumentException("Arguments not passed to program");
         }
@@ -47,15 +48,33 @@ public class Zip {
         if (Arrays.stream(args).noneMatch(arg -> arg.startsWith("-o"))) {
             throw new IllegalArgumentException("specify the output file name using the -o key");
         }
+        Path directory = Paths.get(argsName.get("d"));
+        if (!Files.exists(directory)) {
+            throw new IllegalArgumentException(String.format("%s - not exist", directory));
+        }
+        if (!argsName.get("e").startsWith(".")) {
+            throw new IllegalArgumentException("the file extension must start with the \".\" character");
+        }
+        if (!argsName.get("o").endsWith(".zip")) {
+            throw new IllegalArgumentException("the name of the output file must end with \".zip\"");
+        }
     }
 
-    public static void main(String[] args) throws IOException {
-        checkArgs(args);
+    private static void run(String[] args) throws IOException {
         Zip zip = new Zip();
         ArgsName argsName = ArgsName.of(args);
+        checkArgs(args, argsName);
         Path directory = Paths.get(argsName.get("d"));
         Predicate<Path> exclude = p -> !p.toFile().getName().endsWith(argsName.get("e"));
         File output = new File(argsName.get("o"));
         zip.packFiles(Search.search(directory, exclude), output);
+    }
+
+    public static void main(String[] args) {
+        try {
+            run(args);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
