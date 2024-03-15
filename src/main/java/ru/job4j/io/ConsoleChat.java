@@ -45,9 +45,6 @@ public class ConsoleChat {
             res = "Чат возобновлен.";
             stopChat = false;
         }
-        if (Objects.equals(OUT, question)) {
-            res = "Чат завершен";
-        }
         log.add(res);
         return res;
     }
