@@ -18,12 +18,12 @@ public class UsageLog4j {
         char gender = 'M';
         float height = 170.5F;
         short numBricks = 25000;
-        double numBacteria = 1.2E+09;
+        int number = 57;
         double spaceDistance = 1.432E+12;
         boolean isError = false;
         long fileSize = 4096L;
         LOG.debug("User info name: {}, age: {}, gender: {}, height: {}F", name, age, gender, height);
-        LOG.debug("number of bricks: {}, size of bacterium: {}, space distance: {}", numBricks, numBacteria, spaceDistance);
+        LOG.debug("number of bricks: {}, number: {}, space distance: {}", numBricks, number, spaceDistance);
         LOG.debug("the presence of an error: {}, file size: {}L", isError, fileSize);
     }
 }
