@@ -25,5 +25,11 @@ public class UsageLog4j {
         LOG.debug("User info name: {}, age: {}, gender: {}, height: {}F", name, age, gender, height);
         LOG.debug("number of bricks: {}, number: {}, space distance: {}", numBricks, number, spaceDistance);
         LOG.debug("the presence of an error: {}, file size: {}L", isError, fileSize);
+
+        try {
+            throw new Exception("Not supported code");
+        } catch (Exception e) {
+            LOG.error("Exception in log example", e);
+        }
     }
 }
