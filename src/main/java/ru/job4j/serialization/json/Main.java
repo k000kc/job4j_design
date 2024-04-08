@@ -2,6 +2,11 @@ package ru.job4j.serialization.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,5 +30,30 @@ public class Main {
         /* Превращаем json-строку обратно в объект */
         final Person personMod = gson.fromJson(personJson, Person.class);
         System.out.println(personMod);
+
+        System.out.println();
+
+        /* JSONObject из json-строки строки */
+        JSONObject jsonContact = new JSONObject("{\"phone\":\"+7(924)111-111-11-11\"}");
+
+        /* JSONArray из ArrayList */
+        List<String> list = new ArrayList<>();
+        list.add("Student");
+        list.add("Free");
+        JSONArray jsonStatuses = new JSONArray(list);
+
+        /* JSONObject напрямую методом put */
+        final Person person1 = new Person(false, 30, new Contact("11-111"), new String[] {"Worker", "Married"});
+        JSONObject jsonObject1 = new JSONObject();
+        jsonObject1.put("sex", person1.isSex());
+        jsonObject1.put("age", person1.getAge());
+        jsonObject1.put("contact", jsonContact);
+        jsonObject1.put("statuses", jsonStatuses);
+
+        /* Выведем результат в консоль */
+        System.out.println(jsonObject1.toString());
+
+        /* Преобразуем объект person в json-строку */
+        System.out.println(new JSONObject(person1).toString());
     }
 }
