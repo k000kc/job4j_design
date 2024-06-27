@@ -51,6 +51,19 @@ right join departments d on d.id = e.department_id;
 
 --5. Создать таблицу teens с атрибутами name, gender и заполнить ее. Используя cross join составить все возможные разнополые пары. Исключите дублирование пар вида Вася-Маша и Маша-Вася.
 
+create table teens(
+	id serial primary key,
+	name varchar(255),
+	gender char 
+);
+
+insert into teens(name, gender) values
+	('Маша', 'Ж'),
+	('Миша', 'М'),
+	('Таня', 'Ж'),
+	('Катя', 'Ж'),
+	('Толя', 'М');
+
 select t1.name, t2.name from teens t1
 	cross join teens t2 
 	where t1.gender != t2.gender;
