@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 public class ConnectionDemo {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        Class.forName("org.postgresql.Driver");
         Config config = new Config("src/data/app.properties");
+        Class.forName(config.getValue("driver"));
         String url = config.getValue("url");
         String login = config.getValue("login");
         String password = config.getValue("password");
