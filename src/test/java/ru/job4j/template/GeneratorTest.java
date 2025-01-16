@@ -13,7 +13,7 @@ class GeneratorTest {
     @Test
     public void whenInsertValueIntoTamplateThenGetResultString() {
         Generator generator = new GeneratorUsers();
-        Map<String, String > args = new HashMap<>();
+        Map<String, String> args = new HashMap<>();
         args.put("name", "Petr Arsentev");
         args.put("subject", "you");
         String template = "I am a ${name}, Who are ${subject}?";
@@ -24,7 +24,7 @@ class GeneratorTest {
     @Test
     public void whenInTamplateExtraKeyThenThrownExeption() {
         Generator generator = new GeneratorUsers();
-        Map<String, String > args = new HashMap<>();
+        Map<String, String> args = new HashMap<>();
         args.put("name", "Petr Arsentev");
         String template = "I am a ${name}, Who are ${subject}?";
         assertThatThrownBy(() -> generator.produce(template, args))
@@ -34,7 +34,7 @@ class GeneratorTest {
     @Test
     public void whenThen() {
         Generator generator = new GeneratorUsers();
-        Map<String, String > args = new HashMap<>();
+        Map<String, String> args = new HashMap<>();
         args.put("name", "Petr");
         args.put("lastname", "Arsentev");
         args.put("subject", "you");
