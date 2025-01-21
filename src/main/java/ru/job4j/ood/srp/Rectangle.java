@@ -9,11 +9,19 @@ public class Rectangle {
         this.weight = weight;
     }
 
+    public int getHight() {
+        return hight;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
     /**
      * Нарушение SRP. Подсчет площади фигуры лучше вывести в отдельный клас
      * в текущем классе нужно оставить только представление прямоугольника
      */
     public int area(Rectangle rectangle) {
-        return hight * weight;
+        return rectangle.getHight() * rectangle.getWeight();
     }
 }
