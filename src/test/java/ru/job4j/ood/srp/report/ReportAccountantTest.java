@@ -22,9 +22,9 @@ class ReportAccountantTest {
         store.add(worker);
         CurrencyConverter converter = new InMemoryCurrencyConverter();
         converter.convert(Currency.RUB, worker.getSalary(), Currency.EUR);
-        Report report = new ReportAccountant(store,Currency.RUB, Currency.EUR, converter);
-        String expected = "Ivan: 1000.0 RUB = 16.6 EUR" +
-                System.lineSeparator();
+        Report report = new ReportAccountant(store, Currency.RUB, Currency.EUR, converter);
+        String expected = "Ivan: 1000.0 RUB = 16.6 EUR"
+                + System.lineSeparator();
         assertThat(report.generate(e -> true)).isEqualTo(expected);
     }
 }

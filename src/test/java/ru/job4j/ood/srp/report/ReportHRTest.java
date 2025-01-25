@@ -21,9 +21,9 @@ class ReportHRTest {
         store.add(worker2);
         store.add(worker3);
         Report report = new ReportHR(store);
-        String exected = worker3.getName() + System.lineSeparator() +
-                worker2.getName() + System.lineSeparator() +
-                worker1.getName();
+        String exected = worker3.getName() + System.lineSeparator()
+                + worker2.getName() + System.lineSeparator()
+                + worker1.getName();
         assertThat(report.generate(e -> true)).isEqualTo(exected);
     }
 
