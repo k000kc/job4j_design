@@ -10,7 +10,9 @@ public class Board {
      * и создать реализацию каждой фигуры с соответствующей логикой хода.
      */
     public void move(Piece piece, int destX, int destY) {
-        //логика движения фигуры
+        /*
+         * логика движения фигуры
+         */
     }
 
     private class Piece {

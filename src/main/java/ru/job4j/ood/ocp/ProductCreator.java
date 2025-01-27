@@ -10,7 +10,9 @@ public class ProductCreator {
      * принимающий в качестве аргумента объект ProductFactory.
      */
     public Product create(String type, String name) {
-        //логика создания продукта.
+        /*
+         * логика создания продукта.
+         */
         return new Product(type, name);
     }
 

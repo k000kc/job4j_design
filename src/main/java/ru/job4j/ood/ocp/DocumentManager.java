@@ -11,7 +11,9 @@ public class DocumentManager {
     public boolean processing(String format, String name) {
         if (format.equals("txt")) {
             System.out.println("это документ txt");
-            //логика обработки документа...
+            /*
+             * логика обработки документа...
+             */
         }
         return true;
     }
