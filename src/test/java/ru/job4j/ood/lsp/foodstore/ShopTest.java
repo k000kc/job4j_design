@@ -13,7 +13,7 @@ class ShopTest {
         Store shop = new Shop();
         Calendar today = Calendar.getInstance();
         Calendar breadCreate = (Calendar) today.clone();
-        breadCreate.add(Calendar.DAY_OF_MONTH, - 7);
+        breadCreate.add(Calendar.DAY_OF_MONTH, -7);
         Calendar breadExpiry = (Calendar) today.clone();
         breadExpiry.add(Calendar.DAY_OF_MONTH, 5);
         Food bread = new Food("Хлеб", breadExpiry.getTime(), breadCreate.getTime(), 30.0);
@@ -25,7 +25,7 @@ class ShopTest {
         Store shop = new Shop();
         Calendar today = Calendar.getInstance();
         Calendar breadCreate = (Calendar) today.clone();
-        breadCreate.add(Calendar.DAY_OF_MONTH, - 7);
+        breadCreate.add(Calendar.DAY_OF_MONTH, -7);
         Calendar breadExpiry = (Calendar) today.clone();
         breadExpiry.add(Calendar.DAY_OF_MONTH, 1);
         Food bread = new Food("Хлеб", breadExpiry.getTime(), breadCreate.getTime(), 30.0);

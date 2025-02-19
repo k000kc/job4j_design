@@ -25,7 +25,7 @@ class ControlQualityTest {
         Calendar today = Calendar.getInstance();
 
         Calendar appleCreate = (Calendar) today.clone();
-        appleCreate.add(Calendar.DAY_OF_MONTH, - 1);
+        appleCreate.add(Calendar.DAY_OF_MONTH, -1);
         Calendar appleExpiry = (Calendar) today.clone();
         appleExpiry.add(Calendar.DAY_OF_MONTH, 5);
         Food apple = new Food("Яблоко", appleExpiry.getTime(), appleCreate.getTime(), 50.0);
@@ -37,7 +37,7 @@ class ControlQualityTest {
         Food milk = new Food("Молоко", milkExpiry.getTime(), milkCreate.getTime(), 80.0);
 
         Calendar breadCreate = (Calendar) today.clone();
-        breadCreate.add(Calendar.DAY_OF_MONTH, - 7);
+        breadCreate.add(Calendar.DAY_OF_MONTH, -7);
         Calendar breadExpiry = (Calendar) today.clone();
         breadExpiry.add(Calendar.DAY_OF_MONTH, 5);
         Food bread = new Food("Хлеб", breadExpiry.getTime(), breadCreate.getTime(), 30.0);

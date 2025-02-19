@@ -12,7 +12,7 @@ class WarehouseTest {
         Store warehouse = new Warehouse();
         Calendar today = Calendar.getInstance();
         Calendar breadCreate = (Calendar) today.clone();
-        breadCreate.add(Calendar.DAY_OF_MONTH, - 1);
+        breadCreate.add(Calendar.DAY_OF_MONTH, -1);
         Calendar breadExpiry = (Calendar) today.clone();
         breadExpiry.add(Calendar.DAY_OF_MONTH, 5);
         Food bread = new Food("Хлеб", breadExpiry.getTime(), breadCreate.getTime(), 30.0);
