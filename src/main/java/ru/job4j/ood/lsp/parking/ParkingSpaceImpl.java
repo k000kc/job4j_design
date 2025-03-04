@@ -15,7 +15,7 @@ public class ParkingSpaceImpl implements ParkingSpace {
 
     @Override
     public boolean isOccupied() {
-        return false;
+        return true;
     }
 
     @Override

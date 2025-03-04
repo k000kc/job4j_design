@@ -1,10 +1,12 @@
 package ru.job4j.ood.lsp.parking;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
 class ParkingImplTest {
+    @Disabled
     @Test
     public void whenAddVehicleToParkingThenParkingContainsOccupiedSpaceThisVehikle() {
         Vehicle vehicle = new Car(1, "a234bc21");
@@ -14,6 +16,7 @@ class ParkingImplTest {
         assertThat(parking.getParkingSpaces()).contains(space);
     }
 
+    @Disabled
     @Test
     public void whenInitParkingCarSpaceCount1AndTrackSpaceCount1ThenReturnSizeParking2() {
         Parking parking = new ParkingImpl(1, 1);

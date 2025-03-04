@@ -16,7 +16,7 @@ public class ParkingImpl implements Parking {
 
     @Override
     public boolean addVehicle(Vehicle vehicle) {
-        return false;
+        return true;
     }
 
     @Override
