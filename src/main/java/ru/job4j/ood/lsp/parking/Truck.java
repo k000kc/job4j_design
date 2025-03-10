@@ -1,11 +1,12 @@
 package ru.job4j.ood.lsp.parking;
 
-public class Car implements Vehicle {
+public class Truck implements Vehicle {
+
     private int size;
     private String number;
 
-    public Car(String number) {
-        this.size = 1;
+    public Truck(int size, String number) {
+        this.size = size;
         this.number = number;
     }
 

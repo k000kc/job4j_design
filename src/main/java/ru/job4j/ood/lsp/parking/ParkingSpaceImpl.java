@@ -11,11 +11,16 @@ public class ParkingSpaceImpl implements ParkingSpace {
 
     @Override
     public void occupy(Vehicle vehicle) {
+        if (occupied) {
+            throw new IllegalStateException("This space is occupied!");
+        }
+        this.vehicle = vehicle;
+        this.occupied = true;
     }
 
     @Override
     public boolean isOccupied() {
-        return true;
+        return occupied;
     }
 
     @Override

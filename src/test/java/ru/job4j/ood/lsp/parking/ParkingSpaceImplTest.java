@@ -8,7 +8,7 @@ class ParkingSpaceImplTest {
 
     @Test
     public void whenAddVehicleThenReturnTrue() {
-        Vehicle vehicle = new Car(1, "а345вс21");
+        Vehicle vehicle = new Car("а345вс21");
         ParkingSpace space = new ParkingSpaceImpl(1);
         space.occupy(vehicle);
         assertThat(space.isOccupied()).isTrue();
