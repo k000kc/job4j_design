@@ -20,6 +20,17 @@ public class ControlQuality {
         }
     }
 
+    public void resort() {
+        List<Food> tempFoodsList = new ArrayList<>();
+        for (Store store : stores) {
+            tempFoodsList.addAll(store.getAllFoods());
+            store.getAllFoods().clear();
+        }
+        for (Food food : tempFoodsList) {
+            distribution(food);
+        }
+    }
+
     public static void main(String[] args) {
         List<Store> storeList = new ArrayList<>();
         Store warehouse = new Warehouse();
@@ -53,6 +64,11 @@ public class ControlQuality {
         controlQuality.distribution(bread);
         controlQuality.distribution(egg);
 
+        System.out.println(warehouse.getAllFoods() + "- warehouse \n");
+        System.out.println(shop.getAllFoods() + "- shop \n");
+        System.out.println(trash.getAllFoods() + "- trash \n");
+
+        controlQuality.resort();
         System.out.println(warehouse.getAllFoods() + "- warehouse \n");
         System.out.println(shop.getAllFoods() + "- shop \n");
         System.out.println(trash.getAllFoods() + "- trash \n");
