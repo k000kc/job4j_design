@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -49,5 +50,30 @@ class ControlQualityTest {
         assertThat(warehouse.getAllFoods()).contains(apple);
         assertThat(trash.getAllFoods()).contains(milk);
         assertThat(shop.getAllFoods()).contains(bread);
+    }
+    @Test
+    public void whenAddAppleToStoreAndChangeExpirationDateThenAppleSendsToTrash() {
+        List<Store> storeList = new ArrayList<>();
+        Store warehouse = new Warehouse();
+        Store shop = new Shop();
+        Store trash = new Trash();
+
+        storeList.add(warehouse);
+        storeList.add(shop);
+        storeList.add(trash);
+
+        ControlQuality controlQuality = new ControlQuality(storeList);
+        Calendar today = Calendar.getInstance();
+
+        Calendar appleCreate = (Calendar) today.clone();
+        appleCreate.add(Calendar.DAY_OF_MONTH, -1);
+        Calendar appleExpiry = (Calendar) today.clone();
+        appleExpiry.add(Calendar.DAY_OF_MONTH, 5);
+        Food apple = new Food("Яблоко", appleExpiry.getTime(), appleCreate.getTime(), 50.0);
+
+        controlQuality.distribution(apple);
+        apple.setExpiryDate(new Date());
+        controlQuality.resort();
+        assertThat(trash.getAllFoods()).contains(apple);
     }
 }
