@@ -1,18 +1,20 @@
 package ru.job4j.ood.logger;
 
+import java.util.List;
+
 public class Logger {
     private final Formatting formatting;
-    private final Appender appender;
-    private final Level level;
+    private final List<Appender> appenders;
 
-    public Logger(Formatting formatting, Appender appender, Level level) {
+    public Logger(Formatting formatting, List<Appender> appenders) {
         this.formatting = formatting;
-        this.appender = appender;
-        this.level = level;
+        this.appenders = appenders;
     }
 
-    public void log(String message) {
+    public void log(Level level, String message) {
         String formatted = formatting.format(level, message);
-        appender.append(formatted);
+        for (Appender appender : appenders) {
+            appender.append(formatted);
+        }
     }
 }
