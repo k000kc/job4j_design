@@ -2,7 +2,7 @@ package ru.job4j.algo;
 
 import java.util.Arrays;
 
-public class Main {
+public class MainLessons {
     public static int[] squareSortedArray(int[] arr) {
         int n = arr.length;
         int[] result = new int[n];
