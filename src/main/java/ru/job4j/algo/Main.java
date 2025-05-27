@@ -32,19 +32,6 @@ public class Main {
                 }
             }
         }
-        int minLength = Integer.MIN_VALUE;
-        int finalStart = -1;
-        int finalEnd = -1;
-        for (Interval interval : intervals) {
-            if (interval.start <= maxStart && interval.end >= maxEnd) {
-                int len = maxEnd - maxStart;
-                if (len < minLength) {
-                    minLength = len;
-                    finalStart = maxStart;
-                    finalEnd = maxEnd;
-                }
-            }
-        }
         return new int[] {
                 maxStart, maxEnd
         };
