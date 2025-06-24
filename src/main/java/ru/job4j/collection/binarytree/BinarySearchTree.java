@@ -123,6 +123,22 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     }
 
+    public void clear() {
+        Node node = root;
+        clear(node);
+    }
+
+    private void clear(Node first) {
+        if (first == null) {
+            return;
+        }
+        clear(first.left);
+        clear(first.right);
+        first.key = null;
+        first.left = null;
+        first.right = null;
+    }
+
     private Node getHeir(Node delNode) {
         Node nodeParent = delNode;
         Node node = delNode;

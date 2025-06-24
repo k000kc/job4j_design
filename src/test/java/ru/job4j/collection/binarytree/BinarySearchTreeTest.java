@@ -97,4 +97,22 @@ class BinarySearchTreeTest {
         assertThat(tree.inPostOrder()).hasSize(7)
                 .containsExactly(1, 3, 2, 5, 7, 6, 4);
     }
+
+    @Test
+    void whenCleanThenMaxIsNull() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        for (int element : new int[]{4, 2, 6, 1, 3, 5, 8, 7}) {
+            tree.put(element);
+        }
+        tree.clear();
+        assertThat(tree.maximum()).isEqualTo(null);
+    }
+
+    @Test
+    void whenCleanThenMinIsNull() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        for (int element : new int[]{4, 2, 6, 1, 3, 5, 8, 7}) {
+            tree.put(element);
+        }
+    }
 }
